@@ -19,17 +19,17 @@ class Player(players.base.Player):
         """Is the player running?"""
         status = self.player.GetStatus()
         if status[3] == 1:
-	  return True
-	return False
-	  
+          return True
+        return False
+        
     def is_playing(self):
         """Is the player playing"""
         """Introduce a time delay, DBus seems to lag with python"""
         time.sleep(0.1)
         if self.player.GetStatus()[0] == 0:
-	  return True
-	else:
-	  return False
+          return True
+        else:
+          return False
         
     def status(self):
         """Returns the current song"""
@@ -37,11 +37,11 @@ class Player(players.base.Player):
         time.sleep(0.1)
         msg = None
         if self.is_playing():
-	  msg = "[Playing]"
-	else:
-	  msg = "[Paused]"
-	metadata = self.player.GetMetadata()
-	return msg + ' "%s" by "%s" from "%s"' % (metadata['title'],
+          msg = "[Playing]"
+        else:
+          msg = "[Paused]"
+        metadata = self.player.GetMetadata()
+        return msg + ' "%s" by "%s" from "%s"' % (metadata['title'],
                                                   metadata['artist'],
                                                   metadata['album'])
             
@@ -80,9 +80,9 @@ class Player(players.base.Player):
     def play(self):
         """Play current song"""
         if not self.is_playing():
-	  return self.play_pause()
+          return self.play_pause()
         
     def pause(self):
         """Pause current song"""
         if self.is_playing():
-	  return self.play_pause()
+          return self.play_pause()
