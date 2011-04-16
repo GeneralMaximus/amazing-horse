@@ -17,7 +17,6 @@ class Player(players.base.Player):
  
     def is_running(self):
         """Is the player running?"""
-
         status = self.player.GetStatus()
         if status[3] == 1:
 	  return True
